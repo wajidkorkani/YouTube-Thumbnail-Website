@@ -3,81 +3,140 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root {
+    --bg-color: #0f0f0f;
+    --card-bg: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+    --accent-color: orange;
+    --text-main: #ffffff;
+    --text-dim: #aaaaaa;
+    --btn-github: #333333;
+    --btn-linkedin: #0077b5;
 }
 
 body {
-    background-color: #0f0f0f;
-    color: #ffffff;
+    background-color: var(--bg-color);
+    color: var(--text-main);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Profile Header */
+/* --- Profile Header Section --- */
 .profile-card {
-    background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
-    padding: 3rem 1rem;
+    background: var(--card-bg);
+    padding: 3.5rem 1.5rem;
     text-align: center;
-    border-bottom: 2px solid orange;
+    border-bottom: 3px solid var(--accent-color);
 }
 
 .profile-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .profile-pic {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid orange;
+    border: 4px solid var(--accent-color);
     margin-bottom: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
 .profile-text h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.profile-text p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
 }
 
 .stats {
-    margin-top: 1rem;
+    margin-top: 1.2rem;
 }
 
 .stats span {
     margin: 0 15px;
-    color: #aaaaaa;
+    color: var(--text-dim);
+    font-size: 0.95rem;
 }
 
-/* Gallery Container */
+/* Social Buttons */
+.social-links {
+    margin-top: 2rem;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    border: 1px solid orange;
+    background: var(--btn-github);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px orange;
+    filter: brightness(1.2);
+}
+
+.linkedin {
+    background: var(--btn-linkedin);
+    border: none;
+}
+
+.linkedin:hover {
+    box-shadow: 0 5px 15px var(--btn-linkedin);
+}
+
+/* --- Gallery Container --- */
 .container {
     max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 20px;
+    margin: 3rem auto;
+    padding: 0 25px;
 }
 
 .section-title {
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
-    border-left: 5px solid orange;
-    padding-left: 15px;
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+    border-left: 6px solid var(--accent-color);
+    padding-left: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Responsive Grid */
+/* Responsive Grid System */
 .thumbnail-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
 }
 
 .thumbnail-item {
     position: relative;
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    background: #1a1a1a;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .thumbnail-item img {
@@ -87,9 +146,11 @@ body {
     object-fit: cover;
 }
 
-/* Hover Effect */
+/* Hover & Overlay Effects */
 .thumbnail-item:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
+    z-index: 2;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
 }
 
 .overlay {
@@ -98,7 +159,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,7 +171,18 @@ body {
     opacity: 1;
 }
 
-/* Mobile Adjustments */
+.overlay span {
+    border: 2px solid var(--accent-color);
+    padding: 8px 20px;
+    border-radius: 5px;
+    color: var(--accent-color);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* --- Media Queries (Responsiveness) --- */
+
+/* For Desktop/Tablets: Horizontal Profile */
 @media (min-width: 768px) {
     .profile-content {
         flex-direction: row;
@@ -119,6 +191,26 @@ body {
     
     .profile-pic {
         margin-bottom: 0;
-        margin-right: 2rem;
+        margin-right: 3rem;
+    }
+
+    .social-links {
+        justify-content: flex-start;
+    }
+}
+
+/* For small mobile devices */
+@media (max-width: 480px) {
+    .thumbnail-grid {
+        grid-template-columns: 1fr; /* Stack images in one column */
+    }
+    
+    .profile-text h1 {
+        font-size: 2rem;
+    }
+    
+    .stats span {
+        display: block;
+        margin: 10px 0;
     }
 }
