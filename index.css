@@ -1,0 +1,124 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Profile Header */
+.profile-card {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+    padding: 3rem 1rem;
+    text-align: center;
+    border-bottom: 2px solid orange;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid orange;
+    margin-bottom: 1.5rem;
+}
+
+.profile-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.stats {
+    margin-top: 1rem;
+}
+
+.stats span {
+    margin: 0 15px;
+    color: #aaaaaa;
+}
+
+/* Gallery Container */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    border-left: 5px solid orange;
+    padding-left: 15px;
+}
+
+/* Responsive Grid */
+.thumbnail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.thumbnail-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail-item img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+/* Hover Effect */
+.thumbnail-item:hover {
+    transform: scale(1.03);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.thumbnail-item:hover .overlay {
+    opacity: 1;
+}
+
+/* Mobile Adjustments */
+@media (min-width: 768px) {
+    .profile-content {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .profile-pic {
+        margin-bottom: 0;
+        margin-right: 2rem;
+    }
+}
