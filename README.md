@@ -92,3 +92,6 @@ This project is open source and available under the MIT License.
 ---
 
 **Note:** Replace placeholder image sources with your actual thumbnail images for the gallery to display properly.
+
+
+**Visit the live website:** [YouTube Thumbnail Showcase](https://wajidkorkani.github.io/YouTube-Thumbnail-Website/)
